@@ -42,7 +42,8 @@ public class PaperService {
         Paper paper = paperRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found: "+id));
 
-        paper.update(request.getPaper_no(), request.getPaper_writer_no(), request.getPaper_content());
+        paper.update(request.getPaper_no(), request.getPaper_maker(),
+                request.getPaper_receiver(), request.getPaper_submit_date());
 
         return paper;
     }

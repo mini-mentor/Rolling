@@ -3,14 +3,12 @@ package org.rolling.dto;
 import lombok.Getter;
 import org.rolling.domain.User;
 
-
 @Getter
 public class UserResponse {
     private final String email;
     private final  String pw;
     private final String name;
     private  final int rolling_paper_no;
-
 
     public UserResponse(User user){
         this.email = user.getEmail();
