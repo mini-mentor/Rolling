@@ -1,7 +1,6 @@
 package org.rolling.dto;
 
 import lombok.Getter;
-import org.rolling.domain.RollingPaper;
 
 import java.util.Date;
 
