@@ -1,11 +1,8 @@
 package org.rolling.dto;
 
-import com.fasterxml.jackson.databind.DatabindException;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.rolling.domain.Paper;
 
 import java.util.Date;
 
