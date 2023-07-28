@@ -2,6 +2,7 @@ package org.rolling.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.rolling.domain.Paper;
 import org.rolling.dto.AddPaperRequest;
 import org.rolling.dto.UpdatePaperRequest;
 import org.rolling.repository.PaperRepository;
