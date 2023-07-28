@@ -1,6 +1,7 @@
 package org.rolling.dto;
 
 import lombok.Getter;
+import org.rolling.domain.RollingPaper;
 
 import java.util.Date;
 
@@ -13,9 +14,9 @@ public class RollingPaperResponse {
 
 
     public RollingPaperResponse(RollingPaper rollingPaper){
-        this.title = rollingPaper.getTitle();
-        this.maker = rollingPaper.getMaker();
-        this.receiver= rollingPaper.getReceiver();
-        this.date = rollingPaper.getDate();
+        this.title = rollingPaper.getRollingpaper_title();
+        this.maker = rollingPaper.getRollingpaper_from();
+        this.receiver= rollingPaper.getRollingpaper_sent_to();
+        this.date = rollingPaper.getRollingpaper_date();
     }
 }

@@ -3,6 +3,7 @@ package org.rolling.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.rolling.domain.RollingPaper;
 
 import java.util.Date;
 

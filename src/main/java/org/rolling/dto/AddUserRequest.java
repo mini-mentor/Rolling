@@ -16,10 +16,10 @@ public class AddUserRequest {
 
     public User toEntity() {
         return User.builder()
-                .userNo(userNo)
-                .userId(userId)
-                .userPw(userPw)
-                .userName(userName)
+                .user_no(userNo)
+                .user_id(userId)
+                .user_pw(userPw)
+                .user_name(userName)
                 .build();
     }
 }
