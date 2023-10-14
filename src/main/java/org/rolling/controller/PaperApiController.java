@@ -18,7 +18,7 @@ public class PaperApiController {
 
     private final PaperService paperService;
 
-    @PostMapping("/api/papers")
+    @PostMapping("/api/paper")
     public ResponseEntity<Paper> addPaper(@RequestBody AddPaperRequest request) {
         Paper savedPaper = paperService.save(request);
 
@@ -38,7 +38,7 @@ public class PaperApiController {
     }
 
     // GET 요청이 오면 해당 id의 편지글 조회
-    @GetMapping("/api/papers/{id}")
+    @GetMapping("/api/paper/{id}")
     public ResponseEntity<PaperResponse> findPaper(@PathVariable long id) {
         Paper paper = paperService.findById(id);
 
@@ -46,7 +46,7 @@ public class PaperApiController {
                 .body(new PaperResponse(paper));
     }
 
-    @DeleteMapping("/api/papers/{id}")
+    @DeleteMapping("/api/paper/{id}")
     public ResponseEntity<Void> deletePaper(@PathVariable long id) {
         paperService.delete(id);
 
@@ -54,7 +54,7 @@ public class PaperApiController {
                 .build();
     }
 
-    @PutMapping("/api/papers/{id}")
+    @PutMapping("/api/paper/{id}")
     public ResponseEntity<Paper> updatePaper(@PathVariable long id,
                                              @RequestBody UpdatePaperRequest request) {
         Paper updatePaper = paperService.update(id, request);

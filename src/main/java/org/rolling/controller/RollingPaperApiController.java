@@ -25,7 +25,7 @@ public class RollingPaperApiController {
                 .body(savedRollingPaper);
     }
 
-    @GetMapping("/api/papers")
+    @GetMapping("/api/rolling-papers")
     public ResponseEntity<List<RollingPaperResponse>> findAllPapers() {
         List<RollingPaperResponse> papers = rollingPaperService.findAll()
                 .stream()
@@ -37,7 +37,7 @@ public class RollingPaperApiController {
     }
 
     // GET 요청이 오면 해당 id의 편지글 조회
-    @GetMapping("/api/papers/{id}")
+    @GetMapping("/api/rolling-papers/{id}")
     public ResponseEntity<RollingPaperResponse> findPaper(@PathVariable long id) {
         RollingPaper rollingpaper = rollingPaperService.findById(id);
 
@@ -45,15 +45,15 @@ public class RollingPaperApiController {
                 .body(new RollingPaperResponse(rollingpaper));
     }
 
-    @DeleteMapping("/api/papers/{id}")
-    public ResponseEntity<Void> deletePaper(@PathVariable long id) {
-        rollingPaperService.delete(id);
+//    @DeleteMapping("/api/papers/{id}")
+//    public ResponseEntity<Void> deletePaper(@PathVariable long id) {
+//        rollingPaperService.delete(id);
+//
+//        return ResponseEntity.ok()
+//                .build();
+//    }
 
-        return ResponseEntity.ok()
-                .build();
-    }
-
-    @PutMapping("/api/papers/{id}")
+    @PutMapping("/api/rolling-papers/{id}")
     public ResponseEntity<RollingPaper> updatePaper(@PathVariable long id,
                                              @RequestBody UpdateRollingPaperRequest request) {
         RollingPaper updatePaper = rollingPaperService.update(id, request);

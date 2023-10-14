@@ -20,16 +20,16 @@ public class RollingPaper {
     @Column(name = "rollingpaper_title", nullable = false)
     private String rollingpaper_title;
 
-    @Column(name = "rollingpaper_content", nullable = false)
+    @Column(name = "rollingpaper_content", nullable = true)
     private String rollingpaper_content;
 
-    @Column(name = "rollingpaper_sent_date", nullable = false)
+    @Column(name = "rollingpaper_sent_date", nullable = true)
     private Date rollingpaper_date;
 
-    @Column(name = "rollingpaper_sent_from", nullable = false)
+    @Column(name = "rollingpaper_sent_from", nullable = true)
     private String rollingpaper_from;
 
-    @Column(name = "rollingpaper_sent_to", nullable = false)
+    @Column(name = "rollingpaper_sent_to", nullable = true)
     private String rollingpaper_sent_to;
 
     @Builder//빌더 패턴으로 객체 생성
