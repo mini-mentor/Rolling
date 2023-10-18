@@ -7,3 +7,4 @@ INSERT INTO rolling_paper (rollingpaper_id, rollingpaper_title, rollingpaper_sen
 INSERT INTO rolling_paper (rollingpaper_id, rollingpaper_title, rollingpaper_sent_from) VALUES (3, 'c', '2-3반')
 INSERT INTO rolling_paper (rollingpaper_id, rollingpaper_title, rollingpaper_sent_from) VALUES (4, 'd', '2-4반')
 INSERT INTO rolling_paper (rollingpaper_id, rollingpaper_title, rollingpaper_sent_from) VALUES (5, 'e', '2-5반')
+INSERT INTO rolling_paper (rollingpaper_id, rollingpaper_title, rollingpaper_sent_from) VALUES (6, 'f', '2-6반')
