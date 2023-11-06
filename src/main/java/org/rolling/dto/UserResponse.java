@@ -5,15 +5,17 @@ import org.rolling.domain.User;
 
 @Getter
 public class UserResponse {
+    private final int no;
     private final String email;
     private final  String pw;
     private final String name;
     private  final int rolling_paper_no;
 
     public UserResponse(User user){
-        this.email = user.getEmail();
-        this.pw = user.getPw();
-        this.name = user.getName();
-        this.rolling_paper_no = user.getRolling_paper_no();
+        this.no = user.getUser_no();
+        this.email = user.getUser_id();
+        this.pw = user.getUser_pw();
+        this.name = user.getUser_name();
+        this.rolling_paper_no = user.getUser_rollingpaper_count();
     }
 }

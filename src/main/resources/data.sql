@@ -1,3 +1,10 @@
-INSERT INTO paper (paper_no, paper_writer_no, paper_content) VALUES (1, 1, '동명아 반가워')
-INSERT INTO paper (paper_no, paper_writer_no, paper_content) VALUES (2, 2, '친하게 지내자')
-INSERT INTO paper (paper_no, paper_writer_no, paper_content) VALUES (3, 3, '앞으로도 잘 부탁해')
+INSERT INTO paper (paper_no, paper_maker, paper_receiver) VALUES (1, '1', 'a')
+INSERT INTO paper (paper_no, paper_maker, paper_receiver) VALUES (2, '2', 'a')
+INSERT INTO paper (paper_no, paper_maker, paper_receiver) VALUES (3, '3', 'a')
+
+INSERT INTO rolling_paper (rollingpaper_id, rollingpaper_title, rollingpaper_sent_from) VALUES (1, '안녕', '2-1반')
+INSERT INTO rolling_paper (rollingpaper_id, rollingpaper_title, rollingpaper_sent_from) VALUES (2, '반가워', '2-2반')
+INSERT INTO rolling_paper (rollingpaper_id, rollingpaper_title, rollingpaper_sent_from) VALUES (3, '친하게 지내자', '2-3반')
+INSERT INTO rolling_paper (rollingpaper_id, rollingpaper_title, rollingpaper_sent_from) VALUES (4, '잘 지내보자', '2-4반')
+INSERT INTO rolling_paper (rollingpaper_id, rollingpaper_title, rollingpaper_sent_from) VALUES (5, '행복해', '2-5반')
+INSERT INTO rolling_paper (rollingpaper_id, rollingpaper_title, rollingpaper_sent_from) VALUES (6, '즐거워', '2-6반')

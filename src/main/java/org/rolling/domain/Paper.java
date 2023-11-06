@@ -25,7 +25,7 @@ public class Paper {
     @Column(name = "paper_receiver", nullable = false) // 받는 사람 이름
     private String paper_receiver;
 
-    @Column(name = "paper_submit_date", nullable = false) // 롤링페이퍼 전송 시점
+    @Column(name = "paper_submit_date", nullable = true) // 롤링페이퍼 전송 시점
     private Date paper_submit_date;
 
 //    fk user_id : 유저가 가지고 있는 아이디
