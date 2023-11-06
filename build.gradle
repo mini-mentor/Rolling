@@ -19,7 +19,7 @@ dependencies {
     // 스프링 데이터 JPA
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     runtimeOnly 'mysql:mysql-connector-java' // 인메모리 데이터베이스
-    implementation 'mysql:mysql-connector-java:8.0.34'
+    implementation 'mysql:mysql-connector-java:8.0.33'
     compileOnly 'org.projectlombok:lombok'  // 롬복
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
