@@ -1,12 +1,19 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb
-  h2:
-    console:
-      enabled: true
+    # MySQL 기본 설정
+    url: jdbc:mysql://localhost:3306/rolling_db?"+"useUnicode=true&characterEncoding=euckr
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: gkdms~!1357
   jpa:
-    show-sql: true
+    database: mysql # MySQL 상세 지정
+    show-sql: true # API 호출 시 sql문을 출력
     properties:
       hibernate:
         format_sql: true
+        ddl-auto: nones
     defer-datasource-initialization: true
+
+server:
+  address: localhost
+  port: 8080
