@@ -13,15 +13,15 @@ import java.util.Date;
 public class AddRollingPaperRequest {
     private String title;
     private String content;
-    private String from;
-    private String to;
+    private String maker;
+    private String receiver;
 
     public RollingPaper toEntity(){
         return RollingPaper.builder()
                 .title(title)
                 .content(content)
-                .from(from)
-                .to(to)
+                .from(maker)
+                .to(receiver)
                 .date(new Date())
                 .build();
     }

@@ -19,7 +19,7 @@ public class Paper {
     @Column(name = "paper_no", updatable = false) // 롤링페이퍼 번호
     private Long paper_no;
 
-    @Column(name = "paper_maker", nullable = false) // 롤링페이퍼를 만든 사람
+    @Column(name = "paper_maker") // 롤링페이퍼를 만든 사람
     private String paper_maker;
 
     @Column(name = "paper_receiver", nullable = false) // 받는 사람 이름
