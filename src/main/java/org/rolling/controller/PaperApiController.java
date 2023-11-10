@@ -2,9 +2,9 @@ package org.rolling.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.rolling.domain.Paper;
-import org.rolling.dto.AddPaperRequest;
-import org.rolling.dto.PaperResponse;
-import org.rolling.dto.UpdatePaperRequest;
+import org.rolling.dto.paper.AddPaperRequest;
+import org.rolling.dto.paper.PaperResponse;
+import org.rolling.dto.paper.UpdatePaperRequest;
 import org.rolling.service.PaperService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

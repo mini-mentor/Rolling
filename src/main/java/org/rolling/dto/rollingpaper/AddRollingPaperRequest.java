@@ -1,4 +1,4 @@
-package org.rolling.dto;
+package org.rolling.dto.rollingpaper;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,18 +11,19 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 public class AddRollingPaperRequest {
-    private String title;
-    private String content;
+    private long id;
     private String maker;
     private String receiver;
+    private Date submitDate;
+    private String title;
 
     public RollingPaper toEntity(){
         return RollingPaper.builder()
+                .id(id)
+                .maker(maker)
+                .receiver(receiver)
+                .submit_date(new Date())
                 .title(title)
-                .content(content)
-                .from(maker)
-                .to(receiver)
-                .date(new Date())
                 .build();
     }
 }

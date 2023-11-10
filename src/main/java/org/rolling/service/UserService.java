@@ -3,8 +3,8 @@ package org.rolling.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.rolling.domain.User;
-import org.rolling.dto.AddUserRequest;
-import org.rolling.dto.UpdateUserRequest;
+import org.rolling.dto.user.AddUserRequest;
+import org.rolling.dto.user.UpdateUserRequest;
 import org.rolling.repository.UserRepository;
 import org.springframework.stereotype.Service;
 

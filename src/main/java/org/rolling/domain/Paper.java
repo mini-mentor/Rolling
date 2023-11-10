@@ -16,32 +16,25 @@ public class Paper {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "paper_no", updatable = false) // 롤링페이퍼 번호
-    private Long paper_no;
+    @Column(name = "id", updatable = false, nullable = false) // 롤링페이퍼 번호
+    private Long paperId;
 
-    @Column(name = "paper_maker") // 롤링페이퍼를 만든 사람
-    private String paper_maker;
+    @Column(name = "content") // 롤링페이퍼를 만든 사람
+    private String paperContent;
 
-    @Column(name = "paper_receiver", nullable = false) // 받는 사람 이름
-    private String paper_receiver;
-
-    @Column(name = "paper_submit_date", nullable = true) // 롤링페이퍼 전송 시점
-    private Date paper_submit_date;
-
-//    fk user_id : 유저가 가지고 있는 아이디
+    @Column(name = "writer")
+    private String paperWriter;
 
     @Builder
-    public Paper(Long paper_no, String paper_maker, String paper_receiver, Date paper_submit_date) {
-        this.paper_no = paper_no;
-        this.paper_maker = paper_maker;
-        this.paper_receiver = paper_receiver;
-        this.paper_submit_date = paper_submit_date;
+    public Paper(long id, String content, String writer) {
+        this.paperId = id;
+        this.paperContent = content;
+        this.paperWriter = writer;
     }
 
-    public void update(Long paper_no, String paper_maker, String paper_receiver, Date paper_submit_date) {
-        this.paper_no = paper_no;
-        this.paper_maker = paper_maker;
-        this.paper_receiver = paper_receiver;
-        this.paper_submit_date = paper_submit_date;
+    public void update(long id, String content, String writer) {
+        this.paperId = id;
+        this.paperContent = content;
+        this.paperWriter = writer;
     }
 }

@@ -3,8 +3,8 @@ package org.rolling.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.rolling.domain.Paper;
-import org.rolling.dto.AddPaperRequest;
-import org.rolling.dto.UpdatePaperRequest;
+import org.rolling.dto.paper.AddPaperRequest;
+import org.rolling.dto.paper.UpdatePaperRequest;
 import org.rolling.repository.PaperRepository;
 import org.springframework.stereotype.Service;
 
@@ -42,8 +42,8 @@ public class PaperService {
         Paper paper = paperRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found: "+id));
 
-        paper.update(request.getPaper_no(), request.getPaper_maker(),
-                request.getPaper_receiver(), request.getPaper_submit_date());
+        paper.update(request.getPaperId(), request.getPaperContent(),
+                request.getPaperWriter());
 
         return paper;
     }

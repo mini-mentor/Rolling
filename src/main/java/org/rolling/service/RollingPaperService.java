@@ -3,8 +3,8 @@ package org.rolling.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.rolling.domain.RollingPaper;
-import org.rolling.dto.AddRollingPaperRequest;
-import org.rolling.dto.UpdateRollingPaperRequest;
+import org.rolling.dto.rollingpaper.AddRollingPaperRequest;
+import org.rolling.dto.rollingpaper.UpdateRollingPaperRequest;
 import org.rolling.repository.RollingPaperRepository;
 import org.springframework.stereotype.Service;
 
