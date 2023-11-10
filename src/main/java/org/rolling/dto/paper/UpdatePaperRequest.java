@@ -1,4 +1,4 @@
-package org.rolling.dto;
+package org.rolling.dto.paper;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,8 +13,7 @@ import java.util.Date;
 @Getter
 public class UpdatePaperRequest {
 
-    private Long paper_no;
-    private String paper_maker;
-    private String paper_receiver;
-    private Date paper_submit_date;
+    private Long paperId;
+    private String paperContent;
+    private String paperWriter;
 }

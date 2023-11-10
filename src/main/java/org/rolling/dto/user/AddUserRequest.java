@@ -1,4 +1,4 @@
-package org.rolling.dto;
+package org.rolling.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,13 +13,15 @@ public class AddUserRequest {
     private String userId;
     private String userPw;
     private String userName;
+    private int rollingpaperCount;
 
     public User toEntity() {
         return User.builder()
-                .user_no(userNo)
-                .user_id(userId)
-                .user_pw(userPw)
-                .user_name(userName)
+                .no(userNo)
+                .id(userId)
+                .pw(userPw)
+                .name(userName)
+                .rollingpaperCount(rollingpaperCount)
                 .build();
     }
 }
