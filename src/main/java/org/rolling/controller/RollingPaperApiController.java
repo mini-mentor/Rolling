@@ -26,6 +26,8 @@ public class RollingPaperApiController {
                 .body(savedRollingPaper);
     }
 
+
+
     @GetMapping("/api/rolling-papers")
     public ResponseEntity<List<RollingPaperResponse>> findAllPapers() {
         List<RollingPaperResponse> papers = rollingPaperService.findAll()
@@ -46,13 +48,13 @@ public class RollingPaperApiController {
                 .body(new RollingPaperResponse(rollingpaper));
     }
 
-//    @DeleteMapping("/api/papers/{id}")
-//    public ResponseEntity<Void> deletePaper(@PathVariable long id) {
-//        rollingPaperService.delete(id);
-//
-//        return ResponseEntity.ok()
-//                .build();
-//    }
+    @DeleteMapping("/api/papers/{id}")
+    public ResponseEntity<Void> deletePaper(@PathVariable long id) {
+        rollingPaperService.delete(id);
+
+        return ResponseEntity.ok()
+                .build();
+    }
 
     @PutMapping("/api/rolling-papers/{id}")
     public ResponseEntity<RollingPaper> updatePaper(@PathVariable long id,

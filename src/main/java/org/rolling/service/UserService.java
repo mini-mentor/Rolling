@@ -6,33 +6,27 @@ import org.rolling.domain.User;
 import org.rolling.dto.user.AddUserRequest;
 import org.rolling.dto.user.UpdateUserRequest;
 import org.rolling.repository.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
+// 스프링 시큐리티에서 사용자 정보를 가져오는 인터페이스
 public class UserService {
     private final UserRepository userRepository;
-    //블로그 글 추가 메서드
-    public User save(AddUserRequest request){
-        return userRepository.save(request.toEntity());
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    
+    // 사용자 이름(email)로 사용자의 정보를 가져오는 메서드
+    public User loadUserByUsername(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException(email));
     }
 
-    //블로그 글 하나 조회( 데이터베이스 id 이용해 글 조회 )
-    public User findById(int id){
-        return  userRepository.findById(id)
-                .orElseThrow(()->new IllegalArgumentException("not found: "+id));
+    public Long save(AddUserRequest dto) {
+        return userRepository.save(User.builder()
+                .email(dto.getEmail())
+                // 패스워드 암호화
+                .password(bCryptPasswordEncoder.encode(dto.getPassword()))
+                .build()).getId();
     }
-    @Transactional
-    public User update(int id, UpdateUserRequest request){
-        User user = userRepository.findById(id)
-                .orElseThrow(()-> new IllegalArgumentException("not found "+id));
-
-//        article.update(request.getTitle(), request.getContent());
-
-        return user;
-    }
-    public void delete(long id){
-        userRepository.deleteById((int) id);
-    }
-
 }

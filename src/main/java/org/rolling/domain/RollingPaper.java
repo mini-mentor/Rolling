@@ -38,4 +38,12 @@ public class RollingPaper {
         this.rollingpaperSubmitDate = submit_date;
         this.rollingpaperTitle = title;
     }
+
+    public void update(long id, String maker, String receiver, Date submit_date, String title) {
+        this.rollingpaperId = id;
+        this.rollingpaperMaker = maker;
+        this.rollingpaperReceiver = receiver;
+        this.rollingpaperSubmitDate = submit_date;
+        this.rollingpaperTitle = title;
+    }
 }

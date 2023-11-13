@@ -1,11 +1,17 @@
 package org.rolling.dto.user;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
 public class UpdateUserRequest {
     private long id;
-    private String userId;
-    private String userName;
-    private String userPw;
-    private int rollingpaperCount;
+    private String email;
+    private String password;
+
 
 
 }

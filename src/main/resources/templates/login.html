@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../img/logo.svg">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <!-- google auth -->
+    <meta name="google-signin-client_id"
+          content="23578035506-m89lq9b9hquja73mb4mg8jb8nt1h9bk3.apps.googleusercontent.com">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+<header>
+    <div class="title">Rolling</div>
+    <img id="menu-outline" src="img/menu-outline.svg" alt="메뉴바">
+</header>
+<div class="container">
+
+    <head>
+        <div class="head">
+            Rolling
+        </div>
+    </head>
+    <main>
+        <input type="email" name="email" placeholder="이메일"><br>
+        <input type="password" name="pass" placeholder="비밀번호">
+        <div class="exception">
+            <a href="./password.html" id="find-pass">비밀번호를 잊으셨나요?</a>
+            <span id="contour">|</span>
+            <a href="./password.html" id="join-button">회원가입하기</a>
+        </div>
+    </main>
+    <footer>
+
+
+        <div class="rolling-login" onclick="login()">
+            <span>로그인</span>
+        </div>
+
+        <p>또는</p>
+        <div class="google-login" onclick="join()">
+            <img src="./img/google-logo.svg" alt="google-login">
+            <span>google로 로그인하기</span>
+        </div>
+        <div class="kakao-login" onclick="moveKakaoLogin()" >
+            <img src="./img/kakao-logo.svg" alt="kakao-login">
+            <span>카카오톡으로 로그인하기</span>
+        </div>
+    </footer>
+</div>
+
+<!-- 카카오 SDK -->
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+        const REST_API_KEY = "cf6c1b26d536e817786a5dfc4c3d9cba";
+        const kakaoLoginUrl = "https://kauth.kakao.com/oauth/authorize";
+        const kakaoTokenApiUrl = "https://kauth.kakao.com/oauth/token";
+        const redirectUrl = "http://127.0.0.1:5501/main.html";
+
+        // 3-2. 카카오 로그인 창으로 이동
+        function moveKakaoLogin() {
+            location.href = `${kakaoLoginUrl}?client_id=${REST_API_KEY}&redirect_uri=${redirectUrl}&response_type=code`;
+        }
+
+        // 3-3. redirect_url로 이동한 후 url 뒤에 code 값 붙어옴
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const code = new URL(window.location.href).searchParams.get('code');
+            // const code = urlParams.get('code');
+            // alert("dfdfd " + code);
+            if (code) {
+                // code 값이 있다면 토큰을 가져옴
+                let token = getKakaoToken(code);
+                // alert("getKakaoToken 이후 token : " + token);
+                console.log(`Kakao 토큰: ${token}`);
+            }
+        });
+
+
+        // 3-4. 이동된 redirect_url 에서 전달받은 코드 값을 파라미터로 카카오 토큰 요청 API 호출
+        function getKakaoToken(code) {
+            let token = "";
+            let data = {
+                "grant_type": "authorization_code",
+                "client_id": REST_API_KEY,
+                "redirect_uri": redirectUrl,
+                "code": code,
+            };
+
+            $.ajax(kakaoTokenApiUrl, {
+                data: data,
+                dataType: "json",
+                method: "POST",
+                async: false,
+                success: function (resultData) {
+                    // alert("token받기전 " + resultData);
+                    token = resultData.access_token;
+                }
+            });
+            return token;
+        }
+
+        // 3-5. 회원 정보 가져오기
+        function getKakaoUserInfo(token) {
+            Kakao.Auth.setAccessToken(token);
+            Kakao.API.request({
+                url: "/v2/user/me",
+                success: function (response) {
+                    // response.id -> 카카오 유니크 아이디
+                    // 카카오 유니크 아이디로 회원 여부 판단
+                    // response.kakao_account.profile.nickname -> 이름
+                    // response.kakao_account.profile.thumbnail_image_url -> 프로필 사진 url
+                    // response.kakao_account.profile.email -> 이메일
+                },
+            });
+        }
+    </script>
+<script>
+        function join() {
+
+        }
+
+    </script>
+<script>
+
+        //처음 실행하는 함수
+        function init() {
+            gapi.load('auth2', function () {
+                gapi.auth2.init();
+                options = new gapi.auth2.SigninOptionsBuilder();
+                options.setPrompt('select_account');
+                // 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
+                options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
+                // 인스턴스의 함수 호출 - element에 로그인 기능 추가
+                // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
+                gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
+            })
+        }
+
+        function onSignIn(googleUser) {
+            var access_token = googleUser.getAuthResponse().access_token
+            $.ajax({
+                // people api를 이용하여 프로필 및 생년월일에 대한 선택동의후 가져온다.
+                url: 'https://people.googleapis.com/v1/people/me'
+                // key에 자신의 API 키를 넣습니다.
+                , data: { personFields: 'birthdays', key: 'AIzaSyAjUtBy1b56BErnWTd9hYkWco9QZDCvXGo', 'access_token': access_token }
+                , method: 'GET'
+            })
+                .done(function (e) {
+                    //프로필을 가져온다.
+                    var profile = googleUser.getBasicProfile();
+                    console.log(profile)
+                })
+                .fail(function (e) {
+                    console.log(e);
+                })
+        }
+        function onSignInFailure(t) {
+            console.log(t);
+        }
+    </script>
+<!-- 구글 api 사용을 위한 스크립트 -->
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+</body>
+
+</html>

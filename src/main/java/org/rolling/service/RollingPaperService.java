@@ -31,7 +31,11 @@ public class RollingPaperService {
         RollingPaper rollingPaper = rollingPaperRepository.findById(id)
                 .orElseThrow(()-> new IllegalArgumentException("not found "+id));
 
-//        article.update(request.getTitle(), request.getContent());
+        rollingPaper.update(request.getRollingpaperId(),
+                request.getRollingpaperMaker(),
+                request.getRollingpaperReciever(),
+                request.getRollingpaperSubmitDate(),
+                request.getRollingpaperTitle());
 
         return rollingPaper;
     }

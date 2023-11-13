@@ -3,25 +3,22 @@ package org.rolling.dto.user;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.rolling.domain.User;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 public class AddUserRequest {
-    private int userNo;
-    private String userId;
-    private String userPw;
-    private String userName;
-    private int rollingpaperCount;
+    private long id;
+    private String email;
+    private String password;
 
     public User toEntity() {
         return User.builder()
-                .no(userNo)
-                .id(userId)
-                .pw(userPw)
-                .name(userName)
-                .rollingpaperCount(rollingpaperCount)
+                .email(email)
+                .password(password)
                 .build();
     }
 }

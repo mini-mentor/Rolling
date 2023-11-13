@@ -1,0 +1,97 @@
+.container {
+    margin: 20vw;
+    margin-top: 23vh;
+}
+
+.head {
+    position: inherit;
+    left: 10vw;
+    width: 100%;
+    height: 9vh;
+    margin-bottom: 7vh;
+    border-radius: 0.7em;
+    /* 텍스트 중앙 정렬 */
+    display: grid;
+    place-content: center;
+    background-color: var(--main-color);
+    font-size: 2.5em;
+    font-weight: var(--big-font-weight);
+}
+
+input {
+    width: 95%;
+    height: 2.5em;
+    margin-bottom: 0.5em;
+    padding-left: 0.8em;
+    align-items: center;
+    border: 0.1em solid var(--gray-color);
+    border-radius: 0.5em;
+}
+
+.exception {
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+a,
+#contour {
+    font-size: var(--small-font-size);
+    text-decoration: none;
+    color: var(--black-color);
+}
+
+footer div,
+footer p {
+    position: inherit;
+    width: 100%;
+    height: 3em;
+    border-radius: 1.5em;
+    font-size: var(--normal-font-size);
+    font-weight: var(--big-font-weight);
+    display: grid;
+    place-content: center;
+}
+
+.rolling-login {
+    background-color: var(--main-color);
+}
+
+.google-login {
+    position: relative;
+    border: 0.1em solid var(--gray-color);
+    background-color: var(--white-color);
+    margin-bottom: 1em;
+}
+
+.kakao-login {
+    position: relative;
+    background-color: var(--kakao-color);
+}
+
+.google-login span,
+.kakao-login span {
+    /* position: absolute; */
+    /* left: 10%; */
+    margin-left: 1em;
+}
+
+footer .google-login img,
+footer .kakao-login img {
+    position: absolute;
+    padding-left: 2em;
+
+}
+
+.google-login img {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    top: 0.8vh;
+}
+
+.kakao-login img {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    top: 0.5vh;
+}
