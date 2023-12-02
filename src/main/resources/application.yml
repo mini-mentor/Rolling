@@ -17,6 +17,13 @@ spring:
     user:
       name: user
       password: 1111
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 23578035506-nn4r60idvkau3gt6o346u6isr044f1eg.apps.googleusercontent.com
+            client-secret: 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
+            scope:
 #  sql:
 #    init:
 #      mode: always

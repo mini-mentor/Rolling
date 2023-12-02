@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+<header>
+  <div class="title">Rolling</div>
+  <img id="menu-outline" src="img/menu-outline.svg" alt="메뉴바">
+</header>
+<main>
+  <div class="add-page">
+    <button class="add-btn">
+      <a href="./rolling-paper-creating.html">
+        <img src="./img/plus.png" alt="페이지 더 만들기">
+      </a>
+    </button>
+  </div>
+  <div class="list">
+    <div class="search">
+      <input type="text" class="search">
+
+      <img src="img/search-outline.svg" alt="검색버튼">
+
+    </div>
+    <div class="pages"></div>
+  </div>
+</main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+        // 1. JQUERY CDN 삽입
+
+
+        // 2. ajax 함수 이용해서 api 호출, success 응답 호출 해보기
+        $.support.cors = true;
+        $.ajax({
+            type: 'get',           // 타입 (get, post, put 등등)
+            url: 'http://localhost:8080/api/rolling-papers',           // 요청할 서버url
+            async: true,            // 비동기화 여부 (default : true)
+            dataType: 'json',       // 데이터 타입 (html, xml, json, text 등등)
+            data: {},
+            success: function (result) { // 결과 성공 콜백함수
+                result.forEach((result) => {
+                    setPaperHtml(result.title, result.maker);
+                })
+            }
+        });
+
+        // $(function () {
+        //     $.ajax("http://localhost:8080/api/rolling-papers")
+        //         .success(function (result) {
+        //             result.forEach((result) => {
+        //                 setPaperHtml(result.title, result.maker);
+        //             })
+        //         });
+        // });
+        function setPaperHtml(title, maker) {
+            $(".pages").append(getPaperHtml(title, maker));// html - 덮어씌우기, append - 추가하기
+        }
+
+        function getPaperHtml(title, maker) {
+            return `<div class="paper">
+                        <div class="title">${title}</div>
+                        <div class="detail">
+                            <div class="from">From. ${maker}</div>
+                            <div class="date">2022.12.23</div>
+                        </div>
+                    </div>`;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,35 +1,74 @@
 package org.rolling.domain;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "users")
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false, nullable = false)
-    private long userNo;
+    @Column(name = "id", updatable = false)
+    private long id;
 
-    @Column(name = "user_id")
-    private String userId;
+    @Column(name = "email",nullable = false, unique = true)
+    private String email;
 
-    @Column(name = "user_name")
-    private String userName;
-
-    @Column(name = "user_pw")
-    private String userPw;
-
-    @Column(name = "rollingpaper_count")
-    private int userRollingpaperCount;
+    @Column(name = "password")
+    private String password;
 
     @Builder//빌더 패턴으로 객체 생성
-    public User(long no, String id, String name, String pw, int rollingpaperCount){
-        this.userNo = no;
-        this.userId = id;
-        this.userName = name;
-        this.userPw = pw;
-        this.userRollingpaperCount = rollingpaperCount;
+    public User(String email, String password, String auth){
+        this.email = email;
+        this.password = password;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("user"));
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        // 만료되었는지 확인하는 로직
+        return true; // true -> 만료되지 않았음
+    }
+
+    // 계정 잠금 여부 반환
+    @Override
+    public boolean isAccountNonLocked() {
+        // 계정이 잠금되었는지 확인하는 로직
+        return true; // true -> 잠금되지 않았음
+    }
+
+    // 패스워드의 만료 여부 반환
+    @Override
+    public boolean isCredentialsNonExpired() {
+        // 패스워드가 만료되었는지 확인하는 로직
+        return true; // true -> 만료되지 않았음
+    }
+
+    // 계정 사용 가능 여부 반환
+    @Override
+    public boolean isEnabled() {
+        // 계정이 사용 가능한지 확인하는 로직
+        return true; // true -> 사용 가능
     }
 }

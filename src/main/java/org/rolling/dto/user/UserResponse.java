@@ -5,18 +5,14 @@ import org.rolling.domain.User;
 
 @Getter
 public class UserResponse {
-    private final long userNo;
-    private final String userId;
-    private final String userName;
-    private final String userPw;
-    private final int rollingpaperCount;
+    private final long id;
+    private final String email;
+    private final String password;
 
     public UserResponse(User user){
-        this.userNo = user.getUserNo();
-        this.userId = user.getUserId();
-        this.userName = user.getUserName();
-        this.userPw = user.getUserPw();
-        this.rollingpaperCount = user.getUserRollingpaperCount();
+        this.id = user.getId();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
 
     }
 }
