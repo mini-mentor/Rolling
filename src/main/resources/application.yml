@@ -27,3 +27,13 @@ spring:
 #  sql:
 #    init:
 #      mode: always
+
+jwt:
+  issuer: ajufresh@gmail.com
+  secret_key: study-springboot
+
+logging:
+  level:
+    org:
+      springframework: debug
+      springframework.web: debug
